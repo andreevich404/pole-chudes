@@ -4,7 +4,6 @@ import { Motion } from 'motion-v'
 import { useGame } from '../composables/useGame'
 import { normalizeWord } from '../game/engine'
 import { SUPER_PRIZE } from '../game/prizes'
-import Host from './Host.vue'
 import Keyboard from './Keyboard.vue'
 import SoundToggle from './SoundToggle.vue'
 import Tablo from './Tablo.vue'
@@ -36,7 +35,7 @@ function confirm(): void {
 </script>
 
 <template>
-  <main class="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-4 px-3 py-4 sm:px-5" data-testid="super-game">
+  <main class="intermission-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-4 px-3 py-4 sm:px-5" data-testid="super-game">
     <header class="flex items-start gap-2">
       <div class="min-w-0 flex-1">
         <div class="font-display text-sm uppercase tracking-widest text-gold">Суперигра</div>
@@ -91,6 +90,6 @@ function confirm(): void {
       <button type="button" class="btn btn-gold px-8 text-xl" :disabled="s.superBusy" data-testid="super-finish" @click="game.finish()">К итогам</button>
     </section>
 
-    <div class="panel p-2"><Host :mood="s.hostMood" :text="s.hostSay" /></div>
+    <p class="intermission-host">«{{ s.hostSay }}»</p>
   </main>
 </template>

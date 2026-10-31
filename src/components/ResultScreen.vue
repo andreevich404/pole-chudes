@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 import { Motion } from 'motion-v'
 import { useGame } from '../composables/useGame'
-import Host from './Host.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import PrizeShelf from './PrizeShelf.vue'
 
@@ -16,7 +15,7 @@ const youWon = computed(() => winner.value?.isBot === false)
 </script>
 
 <template>
-  <main class="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-4 px-3 py-5 sm:px-5" data-testid="result-screen">
+  <main class="intermission-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-4 px-3 py-5 sm:px-5" data-testid="result-screen">
     <Motion
       class="text-center"
       :initial="{ scale: 0.5, opacity: 0 }"
@@ -51,7 +50,7 @@ const youWon = computed(() => winner.value?.isBot === false)
       <p v-if="s.chest.length" class="mt-3 text-sm text-white/90">🗝️ Шкатулки по ключам открыты: {{ s.chest.map((p) => p.emoji).join(' ') }}</p>
     </section>
 
-    <div class="panel p-2"><Host :mood="s.hostMood" :text="s.hostSay" /></div>
+    <p class="intermission-host">«{{ s.hostSay }}»</p>
 
     <div class="flex flex-col gap-3 sm:flex-row">
       <Motion class="flex-1" :while-hover="{ scale: 1.03 }" :while-press="{ scale: 0.95 }">

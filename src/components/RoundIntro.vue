@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 import { Motion } from 'motion-v'
 import { ROUNDS, useGame } from '../composables/useGame'
-import Host from './Host.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 
 const game = useGame()
@@ -13,10 +12,10 @@ const first = computed(() => s.players[s.roundIndex % s.players.length])
 </script>
 
 <template>
-  <main class="mx-auto flex min-h-dvh w-full max-w-2xl flex-col items-center justify-center gap-5 px-4 py-6" data-testid="round-intro">
+  <main class="round-intro-screen mx-auto flex min-h-dvh w-full max-w-2xl flex-col items-center justify-center gap-5 px-4 py-6" data-testid="round-intro">
     <Motion
       class="text-center"
-      :initial="{ scale: 0.4, opacity: 0, rotate: -6 }"
+      :initial="{ scale: 0.95, opacity: 0, rotate: -6 }"
       :animate="{ scale: 1, opacity: 1, rotate: 0 }"
       :transition="{ type: 'spring', stiffness: 220, damping: 14 }"
     >
@@ -57,9 +56,9 @@ const first = computed(() => s.players[s.roundIndex % s.players.length])
     </section>
 
     <p class="text-center text-white/90">Первым крутит барабан: <b class="text-gold">{{ first?.name }}</b></p>
-    <div class="panel w-full p-2"><Host :mood="s.hostMood" :text="s.hostSay" /></div>
+    <p class="intermission-host">«{{ s.hostSay }}»</p>
 
-    <Motion :while-hover="{ scale: 1.04 }" :while-press="{ scale: 0.94 }">
+    <Motion :while-hover="{ scale: 1.02 }" :while-press="{ scale: 0.97 }">
       <button type="button" class="btn btn-gold px-10 text-xl" data-testid="start-round" @click="game.startRound()">Поехали!</button>
     </Motion>
   </main>
